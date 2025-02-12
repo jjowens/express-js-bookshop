@@ -1,22 +1,18 @@
-import assert from 'chai';
-import {default as chaiHttp, request} from 'chai-http';
-import * as server from '../../app.js';
-
-use(chaiHttp);
+import { assert, use, expect } from 'chai';
+import {request} from 'chai-http';
+import app from '../../app.js';
 
 describe("Test API", () => {
    it("Get Genres", () => {
-
-      assert.isTrue(true, "Valid");
-      // request(server)
-      //     .get("/api/genres")
-      //     .set("Accept", "application/json")
-      //     .expect(200)
-      //     .end(function (err, res) {
-      //        if (err) {
-      //           assert.fail(err);
-      //        }
-      //     })
+       request.execute(app)
+           .get("/api/genres")
+           .set("Accept", "application/json")
+           //.expect(200)
+           .end(function (err, res) {
+               if (err) {
+                   assert.fail(err);
+               }
+           });
    });
 
 });
