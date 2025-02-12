@@ -1,15 +1,14 @@
-import { use, assert } from 'chai';
-import chaiHttp from 'chai-http';
+import { expect, use, assert } from 'chai';
+import {default as chaiHttp, request} from 'chai-http';
 import * as server from '../../app.js';
-const chai = use(chaiHttp);
 
-chai.use(chaiHttp);
+use(chaiHttp);
 
 describe("Test API", () => {
    it("Get Genres", () => {
 
       assert.isTrue(true, "Valid");
-      chai.request(server)
+      request(server)
           .get("/api/genres")
           .set("Accept", "application/json")
           .expect(200)
